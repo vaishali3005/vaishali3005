@@ -23,6 +23,7 @@ namespace ToDoApp.Controllers
             categoryVM.ToDoCategories = _unitOfWork.Category.GetAll();
             return View(categoryVM);
         }
+        //HTTP GET
         [HttpGet]
         public IActionResult CreateUpdate(int? id)
         {
