@@ -1,0 +1,57 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,Microsoft.AspNetCore.Mvc.RazorPages;
+@model ToDoApp.Models.ToDoVM;
+
+
+<form asp-action="CreateUpdate" asp-controller="ToDo"  method="post">
+    @*<input asp-for="Category.Id" hidden />*@
+    <div class= "border p-3 mt-4 ">
+        <div class="row pb-3">
+            <h2 class="text-primary" @(Model.Category==null || Model.Category.Id==0)?"Create":"Update" >
+                Category    
+            </h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary=All></div>
+        <div class="row mb-3">
+                <label >Title</label>
+                 @*<input asp-for="Category.Id"  />*@
+                 <input asp-for="Category.Title" type="text" class="form-control" /> 
+                 <span asp-validation-for="Category.Title" class="text-danger"></span>
+               
+            </div>
+            <div class="row mb-3">
+                <label >Description</label>
+                 <input asp-for="Category.Description" type="text" class="form-control" /> 
+                 <span asp-validation-for="Category.Description" class="text-danger"></span>
+             </div>
+            <div class="row mb-3">
+                <label > Modified By</label>
+                <input asp-for="Category.ModifiedBy" type="text" class="form-control" /> 
+                 <span asp-validation-for="Category.ModifiedBy" class="text-danger"></span>
+             </div>
+            
+             <div class="row mb-3">
+                <label > IsDeleted</label>
+                <input asp-for="Category.IsDeleted" type="text" class="form-control" /> 
+                 <span asp-validation-for="Category.IsDeleted" class="text-danger"></span>
+              </div>
+             <div class="row mb-3">
+                <label > IsCompleted</label>
+                <input asp-for="Category.IsCompleted" type="text" class="form-control" /> 
+                 <span asp-validation-for="Category.IsCompleted" class="text-danger"></span>
+              </div>
+            @if(Model.Category==null || Model.Category.Id==0)
+            {
+                <button asp-action="CreateUpdate" asp-controller="ToDo" class="btn btn-primary" type="submit" class="form-control" >Create</button>
+            }
+            else
+            {
+                 <input asp-for="Category.Id" hidden />
+                <button asp-action="CreateUpdate" asp-controller="ToDo" class="btn btn-primary" type="submit" class="form-control" >Update</button>
+            }
+            
+    </div>
+    <a asp-action="Index" asp-controller="ToDo">Back To List</a>
+</form>
+

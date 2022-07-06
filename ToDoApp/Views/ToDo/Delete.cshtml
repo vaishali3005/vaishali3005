@@ -1,0 +1,45 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,Microsoft.AspNetCore.Mvc.RazorPages;
+@model ToDoCategory
+
+<form asp-action="Delete" asp-controller="ToDo"  method="post">
+    <div class= "border p-3 mt-4 ">
+        <div class="row pb-3">
+            <h2 class="text-primary">
+                Delete ToDoCategory    
+            </h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary=All></div>
+        <div class="row mb-3">
+                <label asp-for=Title>Title</label>
+                <input disabled asp-for="Title" type="text" class="form-control" /> 
+                 <span asp-validation-for="Title" class="text-danger"></span>
+           </div>
+            <div class="row mb-3">
+                <label >Description</label>
+                <input disabled asp-for="Description" type="text" class="form-control" /> 
+                <input asp-for="Id" hidden />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+             <div class="row mb-3">
+                <label asp-for=Title>Modified By</label>
+                <input disabled asp-for="ModifiedBy" type="text" class="form-control" /> 
+                 <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+           </div>
+           <div class="row mb-3">
+                <label asp-for=Title>Modified On</label>
+                <input disabled asp-for="ModifiedOn" type="text" class="form-control" /> 
+                 <span asp-validation-for="ModifiedOn" class="text-danger"></span>
+           </div>
+           <div class="row mb-3">
+                <label asp-for=Title>IsCompleted</label>
+                <input disabled asp-for="IsCompleted" type="text" class="form-control" /> 
+                 <span asp-validation-for="IsCompleted" class="text-danger"></span>
+           </div>
+            
+            <button asp-action="Delete" asp-controller="ToDo" class="btn btn-danger" type="submit" >Delete</button>
+    </div>
+    <a asp-action="Index"asp-controller="ToDo">Back To List</a>
+</form>
+

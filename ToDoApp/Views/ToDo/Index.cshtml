@@ -1,0 +1,91 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *,Microsoft.AspNetCore.Mvc.RazorPages;
+
+@model ToDoApp.Models.ToDoVM;
+@{ViewData["Title"] = "Index";
+}
+ @if (TempData["success"]!=null)
+{
+    <h2>@TempData["success"]</h2>
+}
+<h1>List Of Items </h1>
+<div class="container p-4">
+    <div class="row p-6">
+        <div class="col-6">
+            <h2 class="text-primary">
+                ToDo
+            </h2>
+        </div>
+         
+     <div class="col-4" >
+          <a class="btn-primary" asp-action="CreateUpdate" asp-Controller="ToDo">
+            <i class="bi bi-plus-circle"></i> &nbsp;Creat New Title
+           </a>
+      </div>
+       
+    </div>
+</div>
+<div> 
+<table class="table border-bottom table-bordered table-striped " style="width:100%">
+        <thead>
+         <tr>
+             <th>
+                Title
+            </th>
+               <th>
+                 Description
+                </th>
+                <th>
+                    Modified By 
+                </th>
+                <th>
+                   Modified On 
+                </th>
+                <th>
+                   IsDeleted
+                </th>
+                <th>
+                  IsCompleted
+                </th>
+                <th>
+                  Edit/Delete
+                </th>
+         </tr>
+        </thead>
+        <tbody> 
+            @foreach( var item in Model.ToDoCategories)
+            {
+                                
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.ModifiedBy
+                    </td>
+                    <td>
+                        @item.ModifiedOn 
+                    </td>
+                    <td>
+                        @item.IsDeleted
+                    </td>
+                    <td>
+                        @item.IsCompleted
+                    </td>
+                    <input asp-for="@item.Id" hidden/>
+                    <td role="group">
+                        <a class="btn-primary" asp-action="CreateUpdate" asp-controller="ToDo" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> </a>
+                         <a class="btn-primary"  asp-action="Delete" asp-controller="ToDo" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i> </a>
+                    </td>
+                   </tr>
+                
+                
+             }
+             
+        </tbody>
+
+   </table>
+   </div>
