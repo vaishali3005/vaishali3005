@@ -11,8 +11,9 @@ namespace ToDoApp.Data
     public class ApplicationDBContext : DbContext
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
-            {
-            }
-        public DbSet<ToDoCategory> ToDo{ get; set; }
+        {
+        }
+
+                public DbSet<ToDoCategory> ToDo{ get; set; }
     }
 }

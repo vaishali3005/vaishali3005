@@ -1,13 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoApp.Data;
-using ToDoApp.Infrastructure.IRepository;
-using ToDoApp.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<ApplicationDBContext>(option =>
 {
@@ -34,6 +31,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=ToDo}/{action=Index}/{id?}");
 
 app.Run();
